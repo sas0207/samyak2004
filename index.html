@@ -1,46 +1,84 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Site</title>
+  <title>Revels Ash Who</title>
+  <link rel="icon" href="favicon.ico">
   <!-- Trigger rebuild -->
+
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #1e3c72, #2a5298);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
+      animation: bgShift 20s ease infinite;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.05);
       padding: 40px;
-      border-radius: 12px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      animation: float 3s ease-in-out infinite;
+      max-width: 600px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
 
     h1 {
       font-size: 2.5em;
+      color: #61dafb;
       margin-bottom: 0.5em;
     }
 
     p {
       font-size: 1.2em;
-      color: #eee;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    section {
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Hello, World!</h1>
-    <p>Your GitHub Pages site is now live.</p>
+    <h1>Revels Ash Who</h1>
+    <p>A vision beyond algorithms.<br>
+       A rebellion in pixels.<br>
+       A soul coded in motion.</p>
   </div>
+
+  <section id="intro">
+    <!-- Future intro section -->
+  </section>
+
+  <section id="vision">
+    <!-- Future vision section -->
+  </section>
+
+  <section id="contact">
+    <!-- Future contact section -->
+  </section>
 </body>
 </html>
