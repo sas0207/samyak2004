@@ -1,84 +1,96 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revels Ash Who</title>
-  <link rel="icon" href="favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolution in Motion</title>
   <!-- Trigger rebuild -->
-
   <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(ellipse at center, #000 0%, #0a0a23 100%);
       color: white;
+      overflow: hidden;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      animation: bgShift 20s ease infinite;
+      position: relative;
     }
 
-    @keyframes bgShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    /* Star Field */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+    }
+    .stars::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      box-shadow:
+        50px 100px white,
+        200px 300px white,
+        400px 150px white,
+        600px 250px white,
+        800px 400px white,
+        1000px 200px white;
+      animation: twinkle 4s infinite ease-in-out;
     }
 
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Fade Container */
     .container {
-      background-color: rgba(255, 255, 255, 0.05);
+      z-index: 1;
+      text-align: center;
       padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
       backdrop-filter: blur(10px);
-      animation: float 3s ease-in-out infinite;
-      max-width: 600px;
+      animation: fadeInOut 8s ease-in-out infinite;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      20% { opacity: 1; transform: translateY(0); }
+      80% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       color: #61dafb;
       margin-bottom: 0.5em;
     }
 
     p {
       font-size: 1.2em;
+      color: #ccc;
       line-height: 1.6;
-      color: #ddd;
-    }
-
-    section {
-      margin-top: 40px;
+      max-width: 600px;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
   <div class="container">
     <h1>Revels Ash Who</h1>
-    <p>A vision beyond algorithms.<br>
-       A rebellion in pixels.<br>
-       A soul coded in motion.</p>
+    <p>
+      I am not just building a website.<br>
+      I am scripting a revolution.<br>
+      A rebellion in pixels. A soul coded in motion.<br>
+      This is where AI meets emotion, and India rises with it.
+    </p>
   </div>
-
-  <section id="intro">
-    <!-- Future intro section -->
-  </section>
-
-  <section id="vision">
-    <!-- Future vision section -->
-  </section>
-
-  <section id="contact">
-    <!-- Future contact section -->
-  </section>
 </body>
 </html>
