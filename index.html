@@ -3,94 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revolution in Motion</title>
-  <!-- Trigger rebuild -->
+  <title>When Tigers Used to Smoke</title>
   <style>
-    /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(ellipse at center, #000 0%, #0a0a23 100%);
-      color: white;
-      overflow: hidden;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #000000, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .glass-box {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 10;
+      text-align: center;
+    }
+
+    .aladdin {
+      position: absolute;
+      top: -100px;
+      left: -200px;
+      animation: flyIn 4s ease-out forwards;
+      font-size: 1.2rem;
+      background: linear-gradient(to right, #ffcc70, #ff6f61);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes flyIn {
+      to {
+        top: 20px;
+        left: 20px;
+      }
+    }
+
+    .section {
+      min-height: 100vh;
+      padding: 8rem 2rem;
       position: relative;
     }
 
-    /* Star Field */
-    .stars {
+    .tiger-bg {
+      background: url('tiger-leaves.png') no-repeat center center;
+      background-size: cover;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    .lyrics-rain span {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: 0;
-    }
-    .stars::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      box-shadow:
-        50px 100px white,
-        200px 300px white,
-        400px 150px white,
-        600px 250px white,
-        800px 400px white,
-        1000px 200px white;
-      animation: twinkle 4s infinite ease-in-out;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
-
-    /* Fade Container */
-    .container {
-      z-index: 1;
-      text-align: center;
-      padding: 40px;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      animation: fadeInOut 8s ease-in-out infinite;
-    }
-
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: translateY(20px); }
-      20% { opacity: 1; transform: translateY(0); }
-      80% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-20px); }
-    }
-
-    h1 {
-      font-size: 2.8em;
-      color: #61dafb;
-      margin-bottom: 0.5em;
-    }
-
-    p {
-      font-size: 1.2em;
+      animation: fall 6s linear infinite;
+      opacity: 0.6;
+      font-style: italic;
       color: #ccc;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto;
+    }
+
+    @keyframes fall {
+      0% { top: -50px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 200px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      z-index: 9;
+    }
+
+    footer {
+      padding: 4rem 2rem;
+      background: #111;
+      text-align: center;
+      font-size: 1.1rem;
+      border-top: 1px solid #333;
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-  <div class="container">
-    <h1>Revels Ash Who</h1>
-    <p>
-      I am not just building a website.<br>
-      I am scripting a revolution.<br>
-      A rebellion in pixels. A soul coded in motion.<br>
-      This is where AI meets emotion, and India rises with it.
-    </p>
+
+  <div class="glass-box">
+    <h1>When Tigers Used to Smoke</h1>
+    <p>I thought of something while listening to <em>Suna Suna Lamha</em>...</p>
   </div>
+
+  <div class="aladdin">
+    🧞‍♂️ I crossed mountains and shone through snow just to help you.
+  </div>
+
+  <div class="sidebar">
+    <h3>AI Purpose</h3>
+    <ul>
+      <li>Empathy through design</li>
+      <li>Jobs through innovation</li>
+      <li>Poetry through code</li>
+    </ul>
+  </div>
+
+  <div class="section tiger-bg">
+    <h2>Why We Need AI</h2>
+    <p>Back when tigers used to smoke, the world was slower, simpler, but less connected.</p>
+    <p>AI is not here to replace—it’s here to amplify.</p>
+  </div>
+
+  <div class="section lyrics-rain">
+    <span style="left: 10%;">Suna... suna...</span>
+    <span style="left: 30%;">lamha...</span>
+    <span style="left: 50%;">beeta...</span>
+    <span style="left: 70%;">kaha...</span>
+    <span style="left: 90%;">gaya...</span>
+  </div>
+
+  <footer>
+    <p>The world wants revolution. I thought of it.</p>
+    <p>— Samyak</p>
+  </footer>
+
 </body>
 </html>
