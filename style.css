@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Georgia', serif;
   background: linear-gradient(135deg, #0f0f1f, #1a1a2a);
   background-size: 400% 400%;
   animation: shimmerBG 20s ease infinite;
