@@ -1,118 +1,33 @@
 body {
   margin: 0;
-  font-family: 'Georgia', serif;
-  background: linear-gradient(135deg, #0f0f1f, #1a1a2a);
-  background-size: 400% 400%;
-  animation: shimmerBG 20s ease infinite;
-  color: #fff;
+  padding: 0;
+  font-family: 'Segoe UI', 'Aladdin', cursive;
+  background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
+  color: #fefefe;
   overflow-x: hidden;
 }
 
-@keyframes shimmerBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/stardust.png');
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.glass-box {
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 10;
+h1, h2 {
+  font-weight: 600;
   text-align: center;
+  color: #ffd369;
+  text-shadow: 0 0 10px rgba(255, 211, 105, 0.6);
 }
 
-.aladdin {
-  position: absolute;
-  top: -100px;
-  left: -200px;
-  animation: flyIn 3s ease-out forwards;
+p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: center;
+  color: #eeeeee;
+  padding: 0 1rem;
 }
 
-.speech {
-  background: linear-gradient(to right, #ffcc70, #ff6f61);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  font-size: 1rem;
-  color: #000;
-}
-
-@keyframes flyIn {
-  to {
-    top: 20px;
-    left: 20px;
-  }
-}
-
-.sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 200px;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem;
-  font-size: 0.9rem;
-  z-index: 9;
-}
-
-.section {
-  min-height: 100vh;
-  padding: 8rem 2rem;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
-}
-
-.section.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.tiger-bg {
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(4px);
-}
-
-.lyrics-rain span {
-  position: absolute;
-  animation: fall 6s linear infinite;
-  opacity: 0.6;
-  font-style: italic;
-  color: #ccc;
-}
-
-@keyframes fall {
-  0% { top: -50px; opacity: 0; }
-  50% { opacity: 1; }
-  100% { top: 100vh; opacity: 0; }
-}
-
-footer {
+section {
   padding: 4rem 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
-  text-align: center;
-  font-size: 1.1rem;
-  border-top: 1px solid #333;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
