@@ -5,48 +5,24 @@ body {
   color: white;
   font-family: 'Segoe UI', sans-serif;
 }
-.logo-container {
-  text-align: center;
-  padding-top: 2rem;
-}
-.logo-text {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.nav-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.nav-links li {
-  margin: 0.5rem 0;
-}
-.nav-links a {
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.moon-icon {
+
+.logo-block {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
+  top: 1cm;
+  left: 1cm;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-#settings-panel {
-  position: fixed;
-  top: 0;
-  right: -200px;
-  width: 200px;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  transition: right 0.5s ease;
-  padding: 2rem;
+
+.logo-icon {
+  width: 32px;
+  height: auto;
 }
-#settings-panel.active {
-  right: 0;
-}
-.setting-box {
-  margin: 1rem 0;
+
+.logo-text {
+  font-size: 1.8rem;
+  font-family: 'Times New Roman', serif;
+  font-weight: normal;
   color: white;
 }
