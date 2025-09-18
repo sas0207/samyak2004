@@ -24,5 +24,45 @@
     </ul>
   </nav>
 </header>
+  <script>
+  const canvas = document.getElementById('starCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = 150; // match the height of .star-divider
+
+  let stars = [];
+
+  function createStar() {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: 0,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 2 + 0.5
+    });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < stars.length; i++) {
+      const star = stars[i];
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      star.y += star.speed;
+      if (star.y > canvas.height) stars.splice(i, 1);
+    }
+  }
+
+  function animateStars() {
+    drawStars();
+    requestAnimationFrame(animateStars);
+  }
+
+  setInterval(createStar, 100);
+  animateStars();
+</script>
 </body>
 </html>
+
+
