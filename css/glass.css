@@ -1,7 +1,13 @@
-.glass-section {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
+.glass-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
   padding: 2rem;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  margin: 2rem auto;
+  width: 80%;
+  color: white;
+}
+.half-box {
+  width: 45%;
+  display: inline-block;
 }
