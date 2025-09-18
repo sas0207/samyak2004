@@ -88,3 +88,25 @@ body {
   position: relative;
   z-index: 2; /* ensures nav stays above canvas */
 }
+/* Content Section Container */
+.content-section {
+  position: relative;
+  height: 100vh;
+  background-color: black;
+}
+
+/* Poetic Box Styling */
+.poetic-box {
+  position: absolute;
+  left: 4cm;
+  right: 4cm;
+  top: calc(2cm + 150px); /* 2cm below nav + star divider height */
+  bottom: 2cm;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+  overflow: auto;
+}
