@@ -28,3 +28,29 @@ body {
   font-weight: normal;
   color: white;
 }
+.nav-links {
+  position: absolute;
+  top: 3.5cm; /* adjust if needed */
+  left: 1cm;
+}
+
+.nav-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: capitalize;
+}
+
+.nav-links li:hover {
+  color: #00ffe7;
+  transform: translateX(5px);
+}
