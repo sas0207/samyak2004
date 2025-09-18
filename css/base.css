@@ -55,3 +55,22 @@ body {
   color: #00ffe7;
   transform: translateY(-2px);
 }
+.star-divider {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden; /* this is key */
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+#starCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
