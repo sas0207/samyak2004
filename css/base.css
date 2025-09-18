@@ -27,7 +27,8 @@ body {
   font-family: 'Times New Roman', serif;
   font-weight: normal;
   color: white;
-}.nav-inline {
+}
+.nav-inline {
   position: absolute;
   top: 2.5cm; /* Adjust if needed based on logo height */
   left: 1cm;
