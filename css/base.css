@@ -16,8 +16,9 @@ body {
 }
 
 .logo-icon {
-  width: 32px;
+  width: 36px;
   height: auto;
+  border-radius: 4px;
 }
 
 .logo-text {
