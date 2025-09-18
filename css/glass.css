@@ -1,13 +1,15 @@
 .glass-box {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   padding: 2rem;
   margin: 2rem auto;
   width: 80%;
   color: white;
+  text-align: center;
 }
 .half-box {
   width: 45%;
   display: inline-block;
+  margin: 1rem;
 }
