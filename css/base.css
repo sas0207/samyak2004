@@ -9,7 +9,7 @@ body {
 .logo-block {
   position: absolute;
   top: 1cm;
-  right: 1cm;
+  left: 1cm;
   display: flex;
   align-items: center;
   gap: 0.5rem;
