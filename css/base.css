@@ -9,10 +9,11 @@ body {
 .logo-block {
   position: absolute;
   top: 1cm;
-  left: 1cm;
+  right: 1cm;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-content: flex-end;
 }
 
 .logo-icon {
