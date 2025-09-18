@@ -3,37 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reality Manifested</title>
+  <title>sasrevelai</title>
 
-  <!-- Modular CSS -->
- <link rel="stylesheet" href="style.css"> <!-- Aladdin-inspired base -->
-<link rel="stylesheet" href="glasses.css">
-<link rel="stylesheet" href="effects.css">
-<link rel="stylesheet" href="canvas.css">
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="stylesheet" href="css/depth.css" />
+  <link rel="stylesheet" href="css/celestial.css" />
 </head>
 <body>
-  <section class="hero fade-in">
-  <h1>Reality Manifested</h1>
-  <p>When observation fails, intention begins...</p>
-</section>
 
-  <section class="glass-section fade-in">
-    <h2>Depth in Design</h2>
-    <p>Layered transparency reveals more than color—it reveals emotion. Glass is not cold; it’s poetic.</p>
+  <!-- Header -->
+  <header id="site-header">
+    <div class="logo-container">
+      <img src="assets/icons/palm-tree.svg" alt="Logo" class="logo-icon" />
+      <span class="logo-text">sasrevelai</span>
+    </div>
+    <nav class="nav-links">
+      <ul>
+        <li><a href="#evolution">Evolution</a></li>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#accuracy">Accuracy</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </nav>
+    <div class="moon-icon" onclick="toggleSettings()">🌙</div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="glass-box hero-box fadeInOnScroll">Lorem Ipsum</div>
   </section>
 
-  <section class="starscape fade-in">
-    <h2>Celestial Thinking</h2>
-    <p>Ideas orbit like constellations—some burn bright, others wait in silence. You choose which to ignite.</p>
+  <!-- Duo Boxes Section -->
+  <section id="duo-boxes">
+    <div class="glass-box half-box left-box fadeInOnScroll"></div>
+    <div class="glass-box half-box right-box fadeInOnScroll"></div>
   </section>
 
-  <footer>
-    <p>Crafted by Samyak. Powered by vision.</p>
+  <!-- Fade Text Section -->
+  <section id="fade-text">
+    <p class="fadeInOnScroll">
+      Lorem ipsum dular sit amet, consectetur adipiscing elit sed do alisan ed empia incididunt at dol–boine, et dolori, magna aliqua.
+    </p>
+  </section>
+
+  <!-- Bio Section -->
+  <section id="bio">
+    <div class="glass-box bio-box fadeInOnScroll">BIO</div>
+  </section>
+
+  <!-- About Us Section (Freeform) -->
+  <section id="about">
+    <p class="about-text fadeInOnScroll">
+      We believe in crafting immersive digital experiences that speak to the soul.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>Designed in India – Crafted for the Future</p>
   </footer>
 
-  <!-- Modular JS -->
-  <!-- Modular JS -->
-<script src="script.js"></script>
-<script src="scrollMagic.js"></script>
+  <!-- Settings Panel -->
+  <aside id="settings-panel">
+    <div class="setting-box">Option 1</div>
+    <div class="setting-box">Option 2</div>
+    <div class="setting-box">Option 3</div>
+  </aside>
+
+  <!-- JS Scripts -->
+  <script src="js/script.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/depth.js"></script>
+  <script src="js/scrollFade.js"></script>
 </body>
 </html>
