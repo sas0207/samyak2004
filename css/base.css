@@ -27,7 +27,34 @@ body {
   font-family: 'Times New Roman', serif;
   font-weight: normal;
   color: white;
+}.nav-inline {
+  position: absolute;
+  top: 2.5cm; /* Adjust if needed based on logo height */
+  left: 1cm;
 }
+
+.nav-inline ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-inline li {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-inline li:hover {
+  color: #00ffe7;
+  transform: translateY(-2px);
+}
+
 .nav-links {
   position: absolute;
   top: 3.5cm; /* adjust if needed */
