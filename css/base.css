@@ -1,11 +1,11 @@
 body {
+  height: 1000vh;
+  overflow: auto;
   margin: 0;
-  padding: 0;
   background-color: #000;
   color: white;
   font-family: 'Segoe UI', sans-serif;
 }
-
 .logo-block {
   position: absolute;
   top: 1cm;
