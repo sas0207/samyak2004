@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const percentText = document.querySelector('.scroll-percent');
   const introWrapper = document.querySelector('.intro-wrapper');
 
+  if (!progressCircle || !percentText || !introWrapper) {
+    console.error("Timer elements not found. Check your HTML class names.");
+    return;
+  }
+
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const scrollHeight = document.body.scrollHeight - window.innerHeight;
