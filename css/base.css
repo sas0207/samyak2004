@@ -175,3 +175,7 @@ svg {
   stroke-dashoffset: 283;
   transition: stroke-dashoffset 0.2s ease;
 }
+body {
+  height: 1000vh; /* ensures scroll space for timer */
+  overflow: auto; /* re-enables scroll after intro fades */
+}
