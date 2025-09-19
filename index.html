@@ -89,17 +89,26 @@
     animateStars();
   </script>
 
-  <!-- Scroll Fade Script (optional) -->
-  <script>
-    const component = document.querySelector('.component');
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        component.style.opacity = '0';
-        component.style.pointerEvents = 'none';
-      }
-    });
-  </script>
+ <script>
+  const progressCircle = document.querySelector('.progress');
+  const percentText = document.querySelector('.scroll-percent');
+  const introSection = document.querySelector('.scroll-intro');
 
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
+    const offset = 283 - (283 * scrollPercent) / 100;
+
+    progressCircle.style.strokeDashoffset = offset;
+    percentText.textContent = `${Math.floor(scrollPercent)}%`;
+
+    if (scrollPercent >= 100) {
+      introSection.style.opacity = '0';
+      introSection.style.pointerEvents = 'none';
+      introSection.style.transform = 'scale(0.95)';
+    }
+  });
+</script>
 </body>
 </html>
