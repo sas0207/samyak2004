@@ -162,10 +162,7 @@
     setInterval(createStar, 100);
     animateStars();
   </script>
-
-  <!-- Scroll Timer Script -->
-<!-- Scroll Timer Script -->
-<!-- Scroll Timer Script -->
+  
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const progressCircle = document.querySelector('.progress');
@@ -181,7 +178,6 @@
       progressCircle.style.strokeDashoffset = offset;
       percentText.textContent = `${Math.floor(scrollPercent)}%`;
 
-      // ✅ Fix: Trigger fade-out at 99% or higher
       if (scrollPercent >= 99) {
         progressCircle.style.strokeDashoffset = 0;
         percentText.textContent = `100%`;
@@ -193,6 +189,7 @@
         setTimeout(() => {
           introSection.style.display = 'none';
           document.body.style.overflow = 'auto';
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // 👈 scrolls back to top
         }, 1500);
       }
     });
