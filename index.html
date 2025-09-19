@@ -164,7 +164,7 @@
   </script>
 
   <!-- Scroll Timer Script -->
- <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
     const progressCircle = document.querySelector('.progress');
     const percentText = document.querySelector('.scroll-percent');
@@ -184,10 +184,9 @@
         introSection.style.pointerEvents = 'none';
         introSection.style.transform = 'scale(0.95)';
 
-        // Fully remove the timer after fade
+        // Fully remove intro section after fade
         setTimeout(() => {
-          introSection.remove();
-          document.body.style.overflow = 'auto'; // re-enable scrolling if needed
+          introSection.style.display = 'none';
         }, 1500); // matches transition duration
       }
     });
