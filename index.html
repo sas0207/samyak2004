@@ -1,95 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<figure class="component" aria-hidden="true" webc:root="override">
-  <div class="timer-wrapper">
-    <svg class="timer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentcolor" viewBox="0 0 256 256">
-      <rect width="256" height="256" fill="none"></rect>
-      <circle cx="128" cy="128" r="88" fill="var(--color-theme)"></circle>
-      <circle cx="128" cy="128" r="88" fill="none" stroke="currentcolor" stroke-miterlimit="10" stroke-width="16"></circle>
-      <line class="timer-hand" x1="128" y1="128" x2="167.6" y2="88.4" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-      <line class="timer-switch" x1="104" y1="8" x2="152" y2="8" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-    </svg>
-  </div>
-  <figcaption class="caption"></figcaption>
-</figure>
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sashrevelai</title>
   <link rel="stylesheet" href="css/base.css" />
 </head>
 <body>
-<!-- Header Block -->
-<header id="site-header">
-  <div class="logo-block">
-    <span class="logo-text">𝑺𝒂𝒔𝒉𝒓𝒆𝒗𝒆𝒍𝒂𝒊</span>
-    <img src="assets/img/pngtree_cartoon-white-coconut-tree-logo_21585820.png" alt="sasrevelai logo" class="logo-icon" />
+
+  <!-- Optional Warning Message -->
+  <div class="warning">
+    <p>⚠️ Scroll-driven animations are not supported in this browser. Try this demo in Chrome 115+.</p>
   </div>
 
-  <!-- Nav Bar Under Logo -->
-  <nav class="nav-inline">
-    <ul>
-      <li>Evolution</li>
-      <li>Purpose</li>
-      <li>Accuracy</li>
-      <li>Pricing</li>
-    </ul>
-  </nav>
-</header>
+  <!-- Scroll Timer Component -->
+  <figure class="component" aria-hidden="true" webc:root="override">
+    <div class="timer-wrapper">
+      <svg class="timer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentcolor" viewBox="0 0 256 256">
+        <rect width="256" height="256" fill="none"></rect>
+        <circle cx="128" cy="128" r="88" fill="var(--color-theme)"></circle>
+        <circle cx="128" cy="128" r="88" fill="none" stroke="currentcolor" stroke-miterlimit="10" stroke-width="16"></circle>
+        <line class="timer-hand" x1="128" y1="128" x2="167.6" y2="88.4" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+        <line class="timer-switch" x1="104" y1="8" x2="152" y2="8" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+      </svg>
+    </div>
+    <figcaption class="caption"></figcaption>
+  </figure>
 
-<!-- Star Divider Section (outside header) -->
-<section class="star-divider">
-  <canvas id="starCanvas"></canvas>
-</section>
+  <!-- Header Block -->
+  <header id="site-header">
+    <div class="logo-block">
+      <span class="logo-text">𝑺𝒂𝒔𝒉𝒓𝒆𝒗𝒆𝒍𝒂𝒊</span>
+      <img src="assets/img/pngtree_cartoon-white-coconut-tree-logo_21585820.png" alt="sasrevelai logo" class="logo-icon" />
+    </div>
+
+    <!-- Nav Bar Under Logo -->
+    <nav class="nav-inline">
+      <ul>
+        <li>Evolution</li>
+        <li>Purpose</li>
+        <li>Accuracy</li>
+        <li>Pricing</li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Star Divider Section -->
+  <section class="star-divider">
+    <canvas id="starCanvas"></canvas>
+  </section>
+
   <!-- Main Content Section -->
-<main class="content-section">
-  <div class="info-box poetic-box">
-    <h2>Title One</h2>
-    <p>This is your first poetic box. Add anything here.</p>
-  </div>
-</main>
-</header>
- <script>
-  const canvas = document.getElementById('starCanvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = 150;
+  <main class="content-section">
+    <div class="info-box poetic-box">
+      <h2>Title One</h2>
+      <p>This is your first poetic box. Add anything here.</p>
+    </div>
+  </main>
 
-  let stars = [];
+  <!-- Star Animation Script -->
+  <script>
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = 150;
 
-  function createStar() {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: 0,
-      size: Math.random() * 2 + 1,
-      speed: Math.random() * 2 + 0.5
-    });
-  }
+    let stars = [];
 
-  function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < stars.length; i++) {
-      const star = stars[i];
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'white';
-      ctx.fill();
-      star.y += star.speed;
-      if (star.y > canvas.height) stars.splice(i, 1);
+    function createStar() {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: 0,
+        size: Math.random() * 2 + 1,
+        speed: Math.random() * 2 + 0.5
+      });
     }
-  }
 
-  function animateStars() {
-    drawStars();
-    requestAnimationFrame(animateStars);
-  }
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) stars.splice(i, 1);
+      }
+    }
 
-  setInterval(createStar, 100);
-  animateStars();
-</script>
+    function animateStars() {
+      drawStars();
+      requestAnimationFrame(animateStars);
+    }
+
+    setInterval(createStar, 100);
+    animateStars();
+  </script>
+
+  <!-- Scroll Fade Script (optional) -->
+  <script>
+    const component = document.querySelector('.component');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        component.style.opacity = '0';
+        component.style.pointerEvents = 'none';
+      }
+    });
+  </script>
+
 </body>
 </html>
-
-
