@@ -80,16 +80,18 @@
 </head>
 <body>
 
-  <!-- Scroll Timer Section -->
-  <section class="scroll-intro">
-    <div class="scroll-timer">
-      <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" class="track" />
-        <circle cx="50" cy="50" r="45" class="progress" />
-      </svg>
-      <div class="scroll-percent">0%</div>
-      <div class="scroll-icon">🕒</div>
+  <!-- Fancy Sparrow Intro Gate -->
+<section class="sparrow-intro">
+  <div class="sparrow-container">
+    <p class="sparrow-label">Fancy Sparrow ✨</p>
+    <div class="shader framed">
+      <img src="https://assets.codepen.io/2153413/sparrow-base.png" alt="Sparrow silhouette" width="512">
+      <div class="shader-layer specular gradient-sparrow">
+        <img class="shader-layer mask" src="https://assets.codepen.io/2153413/sparrow-mask.png" alt="" width="300">
+      </div>
     </div>
+  </div>
+</section>
   </section>
 
   <!-- Header Block -->
@@ -162,34 +164,24 @@
     setInterval(createStar, 100);
     animateStars();
   </script>
-  
-<script>
+  <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const progressCircle = document.querySelector('.progress');
-    const percentText = document.querySelector('.scroll-percent');
-    const introSection = document.querySelector('.scroll-intro');
+    const sparrowIntro = document.querySelector('.sparrow-intro');
 
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const scrollHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
-      const offset = 283 - (283 * scrollPercent) / 100;
-
-      progressCircle.style.strokeDashoffset = offset;
-      percentText.textContent = `${Math.floor(scrollPercent)}%`;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
 
       if (scrollPercent >= 99) {
-        progressCircle.style.strokeDashoffset = 0;
-        percentText.textContent = `100%`;
-
-        introSection.style.opacity = '0';
-        introSection.style.pointerEvents = 'none';
-        introSection.style.transform = 'scale(0.95)';
+        sparrowIntro.style.opacity = '0';
+        sparrowIntro.style.pointerEvents = 'none';
+        sparrowIntro.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
-          introSection.style.display = 'none';
+          sparrowIntro.style.display = 'none';
           document.body.style.overflow = 'auto';
-          window.scrollTo({ top: 0, behavior: 'smooth' }); // 👈 scrolls back to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 1500);
       }
     });
