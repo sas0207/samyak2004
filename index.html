@@ -165,6 +165,7 @@
 
   <!-- Scroll Timer Script -->
 <!-- Scroll Timer Script -->
+<!-- Scroll Timer Script -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const progressCircle = document.querySelector('.progress');
@@ -180,12 +181,18 @@
       progressCircle.style.strokeDashoffset = offset;
       percentText.textContent = `${Math.floor(scrollPercent)}%`;
 
-      if (scrollPercent >= 100) {
+      // ✅ Fix: Trigger fade-out at 99% or higher
+      if (scrollPercent >= 99) {
+        progressCircle.style.strokeDashoffset = 0;
+        percentText.textContent = `100%`;
+
         introSection.style.opacity = '0';
         introSection.style.pointerEvents = 'none';
         introSection.style.transform = 'scale(0.95)';
+
         setTimeout(() => {
           introSection.style.display = 'none';
+          document.body.style.overflow = 'auto';
         }, 1500);
       }
     });
