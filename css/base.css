@@ -110,3 +110,171 @@ body {
   font-family: 'Segoe UI', sans-serif;
   overflow: auto;
 }
+:root {
+  --color-bg: #fffefd;
+  --color-text: #020617;
+  --color-theme: #ffedd5;
+  --color-theme-accent: #fed7aa;
+}
+
+@property --progress {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: system-ui, sans-serif;
+}
+
+.component {
+  --size: 30vmin;
+
+  display: grid;
+  grid-template-areas:
+    "timer"
+    "caption";
+  place-items: center;
+  place-content: center;
+  gap: 0.2em;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+}
+
+.timer-wrapper {
+  grid-area: timer;
+  display: grid;
+  place-items: center;
+  place-content: center;
+  grid-template-areas: "container";
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 45deg,
+    var(--color-theme-accent) calc(var(--progress) * 1%),
+    transparent 0
+  );
+}
+
+.timer-wrapper > * {
+  grid-area: container;
+}
+
+.timer {
+  width: calc(var(--size) / 1.2);
+  height: calc(var(--size) / 1.2);
+}
+
+.caption {
+  grid-area: caption;
+}
+
+.caption::before,
+.caption::after {
+  margin-inline: auto;
+  content: counter(progress);
+  font-size: calc(0.6em + var(--size) / 6);
+  font-weight: bold;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.caption::after {
+  content: "%";
+}
+
+/* Warning for unsupported browsers */
+.warning {
+  color: black;
+  background: papayawhip;
+  padding: 1rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+@supports (animation-timeline: scroll()) {
+  .warning {
+    display: none;
+  }
+
+  body {
+    height: 1000vh;
+  }
+
+  :is(.component, .timer-wrapper, .timer, .timer-hand, .timer-switch) {
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-timeline: scroll();
+  }
+
+  .component {
+    --plunge-offset: 10rem;
+    --plunge-start: calc(100% - var(--plunge-offset) * 2);
+    --plunge-end: calc(100% - var(--plunge-offset));
+
+    animation-name: progress;
+    animation-range: 0 var(--plunge-start);
+    counter-reset: progress var(--progress);
+  }
+
+  .timer-wrapper {
+    animation-name: progress, turn-upright;
+    animation-range: 0 var(--plunge-start),
+      var(--plunge-start) var(--plunge-end);
+  }
+
+  .timer {
+    --plunge-depth: 0.25em;
+    transform-origin: 50% 0;
+    animation-name: plunge;
+    animation-range: var(--plunge-start) var(--plunge-end);
+  }
+
+  .timer-switch {
+    --plunge-depth: 1em;
+    transform-origin: 50% 0;
+    animation-name: plunge;
+    animation-range: var(--plunge-start) var(--plunge-end);
+  }
+
+  .timer-hand {
+    transform-origin: 50%;
+    rotate: calc((var(--progress) / 100) * 360deg);
+    animation-name: progress;
+    animation-range: 0 var(--plunge-start);
+  }
+
+  @keyframes progress {
+    to {
+      --progress: 100;
+    }
+  }
+
+  @keyframes turn-upright {
+    from {
+      rotate: -10deg;
+    }
+    to {
+      rotate: 0;
+    }
+  }
+
+  @keyframes plunge {
+    50% {
+      translate: 0 var(--plunge-depth);
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
