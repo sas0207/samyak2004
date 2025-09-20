@@ -187,7 +187,16 @@ body {
   opacity: 0;
   transition: opacity 1.2s ease;
 }
-
+.gradient-sparrow {
+  background-image: linear-gradient(
+    90deg,
+    hsl(359, 60%, 40%),
+    hsl(16, 60%, 45%),
+    hsl(33, 60%, 50%),
+    hsl(45, 60%, 55%),
+    hsl(58, 60%, 60%),
+    hsl(58, 60%, 65%),
+    hsl(58, 60%,
 body.reveal #site-header,
 body.reveal .star-divider,
 body.reveal .content-section {
