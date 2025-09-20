@@ -111,6 +111,6 @@ body {
   overflow: auto;
 }
 body {
-  height: 2000vh; /* ensures scroll space for timer */
+  height: 1000vh; /* ensures scroll space for timer */
   overflow: auto; /* re-enables scroll after intro fades */
 }
