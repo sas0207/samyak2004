@@ -123,27 +123,11 @@ body {
   font-family: 'Segoe UI', sans-serif;
   overflow: auto;
 }
-.sparrow-intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-.sparrow-container {
-  text-align: center;
-  color: white;
-}
-
+/* Gradient shimmer for Fancy Sparrow */
 .shader {
   position: relative;
+  width: 512px;
+  height: auto;
   display: inline-block;
 }
 
@@ -155,8 +139,8 @@ body {
   height: 100%;
 }
 
-..gradient-sparrow {
-  background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta);
+.gradient-sparrow {
+  background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta); /* test gradient */
   animation: shimmer 8s linear infinite;
   mix-blend-mode: screen;
 }
@@ -164,8 +148,8 @@ body {
 .mask {
   -webkit-mask-image: url("https://assets.codepen.io/2153413/sparrow-mask.png");
   mask-image: url("https://assets.codepen.io/2153413/sparrow-mask.png");
-  -webkit-mask-size: cover;
-  mask-size: cover;
+  -webkit-mask-size: contain;
+  mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -175,16 +159,4 @@ body {
 @keyframes shimmer {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
-}
-#site-header,
-.star-divider,
-.content-section {
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-body.reveal #site-header,
-body.reveal .star-divider,
-body.reveal .content-section {
-  opacity: 1;
 }
