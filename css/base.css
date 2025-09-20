@@ -1,5 +1,3 @@
-
-
 body {
   height: 1000vh;
   overflow: auto;
@@ -112,6 +110,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   overflow: auto;
 }
+/* Fancy Sparrow Intro */
 .sparrow-wrapper {
   position: fixed;
   top: 0;
