@@ -193,9 +193,11 @@
         introSection.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
-          introSection.style.display = 'none';
-          document.body.style.overflow = 'auto'; // ✅ Unlock scroll
-        }, 1500);
+  document.body.style.overflow = 'auto';
+  document.documentElement.style.overflow = 'auto'; // ✅ covers edge cases
+  introSection.style.display = 'none';
+  console.log("Scroll forcibly unlocked");
+}, 1500);
       }
     });
   });
