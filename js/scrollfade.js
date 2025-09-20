@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollHeight = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / scrollHeight) * 100;
 
-    // Optional: fade in shiny sparrow at 30% scroll
+    // Optional shimmer reveal
     if (scrollPercent >= 30) {
       shinySparrow.style.opacity = '1';
     }
@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (scrollPercent >= 99) {
       sparrowIntro.style.opacity = '0';
       sparrowIntro.style.pointerEvents = 'none';
-      document.body.classList.add('reveal');
 
       setTimeout(() => {
         sparrowIntro.remove();
+        document.body.classList.add('reveal');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 1200); // matches your CSS transition
+      }, 1200); // matches CSS transition
     }
   });
 });
