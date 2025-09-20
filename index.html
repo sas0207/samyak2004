@@ -81,8 +81,14 @@
 <body>
   
 <!-- Fancy Sparrow Intro -->
-<div class="sparrow-intro">
-  <img src="assets/img/sparrow transparent.webp" alt="Fancy Sparrow" class="sparrow-img" />
+<div class="shader framed">
+  <!-- Base silhouette (black or coloured) -->
+  <img src="assets/img/sparrow-transparent.webp" alt="Sparrow Base">
+
+  <!-- Shimmer layer -->
+  <div class="shader-layer specular gradient-sparrow">
+    <img class="shader-layer mask" src="assets/img/sparrow-transparent.webp" alt="Sparrow Mask">
+  </div>
 </div>
   <!-- Header Block -->
   <header id="site-header">
