@@ -1,8 +1,12 @@
-// Shimmer gradient scroll effect
 window.addEventListener('scroll', () => {
-  const y = window.scrollY * 0.3; // adjust speed of movement
-  const layer = document.querySelector('.gradient-sparrow');
-  if (layer) {
-    layer.style.backgroundPosition = center ${y}px;
-  }
+  const scrollY = window.scrollY;
+  const sparrow = document.querySelector('.sparrow-img');
+
+  // Fade out and scale down
+  sparrow.style.opacity = 1 - scrollY / 300;
+  sparrow.style.transform = `scale(${1 - scrollY / 1000})`;
+
+  // Shimmer shift
+  const shimmerShift = scrollY % 200;
+  sparrow.style.backgroundPosition = `${shimmerShift}px ${shimmerShift}px`;
 });
