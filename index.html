@@ -1,123 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Sparrow shimmer test</title>
-<style>
-  /* page spacing so you can scroll and see the effect */
-  body { font-family: system-ui, Arial; margin:0; padding:0; min-height:300vh; display:flex; align-items:flex-start; justify-content:center; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sashrevelai</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <style>
+    body {
+      height: 1000vh;
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+    }
 
-  /* container & sizing */
-  .shader {
-    position: relative;
-    width: 420px;                /* change width to fit your design */
-    margin-top: 140vh;           /* put it in the middle of the page so scrolling visible */
-    border-radius: 12px;
-    overflow: visible;           /* keep visible so mask works */
-  }
+    .scroll-intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: black;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
 
-  /* the visible base image */
-  .sparrow-base {
-    display: block;
-    width: 100%;
-    height: auto;
-    user-select: none;
-    -webkit-user-drag: none;
-    pointer-events: auto;
-    z-index: 1;
-    position: relative;
-  }
+    .scroll-timer {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
 
-  /* gradient overlay that will be clipped to the sparrow shape via CSS mask */
-  .gradient-sparrow {
-    position: absolute;
-    inset: 0;                    /* cover the image */
-    z-index: 2;
-    pointer-events: none;
-    background-image: linear-gradient(120deg,
-      hsl(200 80% 70% / 1),
-      hsl(280 75% 65% / 1),
-      hsl(40 95% 70% / 1),
-      hsl(200 80% 70% / 1)
-    );
-    background-size: 300% 300%;
-    background-position: center 0px;
-    mix-blend-mode: color-dodge;  /* try different blend modes if you want: screen, overlay */
-    transition: background-position .1s linear;
+    .scroll-percent {
+      font-size: 1.2rem;
+      margin-top: 8px;
+    }
 
-    /* mask the gradient to the shape of your webp (works in modern Chrome/Edge/Firefox, Safari needs -webkit prefix) */
-    -webkit-mask-image: url("assets/img/sparrow-transparent.webp");
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: contain;        /* 'contain' or 'cover' as needed */
-    -webkit-mask-position: center;
+    .scroll-icon {
+      font-size: 1.5rem;
+      margin-top: 4px;
+    }
 
-    mask-image: url("assets/img/sparrow-transparent.webp");
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    mask-position: center;
-  }
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-  /* fallback style if mask not applied (you'll still see gradient but not clipped) */
-  .no-mask .gradient-sparrow {
-    -webkit-mask-image: none;
-    mask-image: none;
-    opacity: 0.65;
-  }
+    .track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 10;
+    }
 
-  /* small caption so you can see where the test is */
-  .caption { text-align:center; width:420px; margin-top:8px; font-size:0.9rem; color:#444; }
-</style>
+    .progress {
+      fill: none;
+      stroke: white;
+      stroke-width: 10;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 283;
+      transition: stroke-dashoffset 0.2s ease;
+    }
+
+    #starCanvas {
+      width: 100%;
+      height: 150px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <div>
-    <div class="shader">
-      <!-- base image (visible). Ensure this path is exactly your file path -->
-      <img class="sparrow-base" src="assets/img/sparrow-transparent.webp" alt="Sparrow">
-
-      <!-- gradient overlay (clipped to sparrow shape if mask works) -->
-      <div class="gradient-sparrow" aria-hidden="true"></div>
+<!-- Fancy Sparrow Intro -->
+<div class="sparrow-intro">
+  <img src="assets/img/sparrow transparent.webp" alt="Fancy Sparrow" class="sparrow-img" />
+</div>
+  <!-- Header Block -->
+  <header id="site-header">
+    <div class="logo-block">
+      <span class="logo-text">𝑺𝒂𝒔𝒉𝒓𝒆𝒗𝒆𝒍𝒂𝒊</span>
+      <img src="assets/img/pngtree_cartoon-white-coconut-tree-logo_21585820.png" alt="sasrevelai logo" class="logo-icon" />
     </div>
 
-    <div class="caption">Test: sparrow shimmer — scroll up/down to see movement</div>
-  </div>
+    <!-- Nav Bar Under Logo -->
+    <nav class="nav-inline">
+      <ul>
+        <li>Evolution</li>
+        <li>Purpose</li>
+        <li>Accuracy</li>
+        <li>Pricing</li>
+      </ul>
+    </nav>
+  </header>
 
-<script>
-/* Scroll handler (throttled using requestAnimationFrame) - put this in your scrollfade.js if you want */
-(function(){
-  const layer = document.querySelector('.gradient-sparrow');
-  if (!layer) {
-    console.warn('gradient layer not found');
-    return;
-  }
+  <!-- Star Divider Section -->
+  <section class="star-divider">
+    <canvas id="starCanvas"></canvas>
+  </section>
 
-  let ticking = false;
-  function onScrollTick() {
-    const y = window.scrollY * 0.45;         // tweak multiplier for faster/slower effect
-    layer.style.backgroundPosition = center ${y}px;
-    ticking = false;
-  }
+  <!-- Main Content Section -->
+  <main class="content-section">
+    <div class="info-box poetic-box">
+      <h2>Title One</h2>
+      <p>This is your first poetic box. Add anything here.</p>
+    </div>
+  </main>
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(onScrollTick);
-      ticking = true;
+  <!-- Star Animation Script -->
+  <script>
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = 150;
+
+    let stars = [];
+
+    function createStar() {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: 0,
+        size: Math.random() * 2 + 1,
+        speed: Math.random() * 2 + 0.5
+      });
     }
-  }, { passive: true });
 
-  /* Quick runtime check: see if browser applied mask; if not add fallback class for visibility */
-  // small delay to let CSS load
-  setTimeout(() => {
-    const style = getComputedStyle(layer);
-    const mask = style.getPropertyValue('-webkit-mask-image') || style.getPropertyValue('mask-image');
-    if (!mask || mask === 'none' || mask.indexOf('url') === -1) {
-      document.documentElement.classList.add('no-mask');
-      console.info('Mask not detected — using fallback (no-mask).');
-    } else {
-      console.info('Mask detected — gradient clipped to image.');
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < stars.length; i++) {
+        const star = stars[i];
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) stars.splice(i, 1);
+      }
     }
-  }, 200);
-})();
-</script>
+
+    function animateStars() {
+      drawStars();
+      requestAnimationFrame(animateStars);
+    }
+
+    setInterval(createStar, 100);
+    animateStars();
+  </script>
+<script src="js/scrollfade.js" defer></script>
 </body>
 </html>
+
