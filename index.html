@@ -333,28 +333,25 @@
     const progressCircle = document.querySelector('.progress');
     const percentText = document.querySelector('.scroll-percent');
     const introSection = document.querySelector('.scroll-intro');
+    const totalLength = 283;
 
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const scrollHeight = document.body.scrollHeight - window.innerHeight;
       const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
-      const offset = 283 - (283 * scrollPercent) / 100;
+      const offset = totalLength - (totalLength * scrollPercent) / 100;
 
       progressCircle.style.strokeDashoffset = offset;
-      percentText.textContent = ${Math.floor(scrollPercent)}%;
+      percentText.textContent = `${Math.floor(scrollPercent)}%`;
 
       if (scrollPercent >= 99) {
-        progressCircle.style.strokeDashoffset = 0;
-        percentText.textContent = 100%;
-
         introSection.style.opacity = '0';
         introSection.style.pointerEvents = 'none';
         introSection.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
           introSection.style.display = 'none';
-          document.body.style.overflow = 'auto';
-          window.scrollTo({ top: 0, behavior: 'smooth' }); // 👈 scrolls back to top
+          document.body.style.overflow = 'auto'; // re-enable scroll
         }, 1500);
       }
     });
