@@ -124,44 +124,44 @@
   </main>
 
   <!-- Star Animation Script -->
-  <script>
-    const canvas = document.getElementById('starCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = 150;
+ <script>
+  const canvas = document.getElementById('starCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = 150;
 
-    let stars = [];
+  let stars = [];
 
-    function createStar() {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: 0,
-        size: Math.random() * 2 + 1,
-        speed: Math.random() * 2 + 0.5
-      });
+  function createStar() {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: 0,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 2 + 0.5
+    });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < stars.length; i++) {
+      const star = stars[i];
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      star.y += star.speed;
+      if (star.y > canvas.height) stars.splice(i, 1);
     }
+  }
 
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < stars.length; i++) {
-        const star = stars[i];
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'white';
-        ctx.fill();
-        star.y += star.speed;
-        if (star.y > canvas.height) stars.splice(i, 1);
-      }
-    }
+  function animateStars() {
+    drawStars();
+    requestAnimationFrame(animateStars);
+  }
 
-    function animateStars() {
-      drawStars();
-      requestAnimationFrame(animateStars);
-    }
-
-    setInterval(createStar, 100);
-    animateStars();
-  </script>
+  setInterval(createStar, 100);
+  animateStars();
+</script>
   
 <!DOCTYPE html>
 <html lang="en">
@@ -333,7 +333,10 @@
     const progressCircle = document.querySelector('.progress');
     const percentText = document.querySelector('.scroll-percent');
     const introSection = document.querySelector('.scroll-intro');
-    const totalLength = 283;
+    const totalLength = 283; // circumference of the circle
+
+    // Initial setup: prevent scroll until intro fades
+    document.body.style.overflow = 'hidden';
 
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
@@ -341,9 +344,13 @@
       const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
       const offset = totalLength - (totalLength * scrollPercent) / 100;
 
+      // Update circular progress
       progressCircle.style.strokeDashoffset = offset;
+
+      // Update percentage text
       percentText.textContent = `${Math.floor(scrollPercent)}%`;
 
+      // Fade out intro when scroll reaches bottom
       if (scrollPercent >= 99) {
         introSection.style.opacity = '0';
         introSection.style.pointerEvents = 'none';
@@ -351,10 +358,11 @@
 
         setTimeout(() => {
           introSection.style.display = 'none';
-          document.body.style.overflow = 'auto'; // re-enable scroll
+          document.body.style.overflow = 'auto'; // ✅ Unlock scroll
         }, 1500);
       }
     });
+  });
 </script>
 </body>
 </html>
