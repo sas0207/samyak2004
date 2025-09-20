@@ -124,79 +124,65 @@ body {
   overflow: auto;
 }
 /* Gradient shimmer for Fancy Sparrow */
-.sparrow-intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 1.2s ease, transform 1.2s ease;
+
+
+/* Base Style Overrides */
+main {
+  margin: 30vh 0em;
 }
 
-.sparrow-container {
-  text-align: center;
-  color: white;
+section {
+  margin: 10vh 0em;
 }
 
+.full-width {
+  padding: 5em 0em;
+}
+
+/* The Shader Stuff */
 .shader {
   position: relative;
-  width: 512px;
-  height: auto;
-  display: inline-block;
-}
-
-.sparrow-shiny {
-  width: 100%;
-  height: auto;
-  display: block;
-  position: relative;
-  z-index: 1;
+  overflow: hidden;
+  backface-visibility: hidden; /* Forces GPU */
 }
 
 .shader-layer {
+  background: black;
+  mix-blend-mode: multiply;
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  /* background-size: 100%; */
+  background-position: center;
 }
 
-.gradient-sparrow {
-  background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta); /* test gradient */
-  animation: shimmer 8s linear infinite;
-  mix-blend-mode: screen;
+.specular {
+  mix-blend-mode: color-dodge;
+  background-attachment: fixed;
 }
 
 .mask {
-  -webkit-mask-image: url("assets/img/sparrow transparent.webp");
-  mask-image: url("assets/img/sparrow transparent.webp");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
+  mix-blend-mode: multiply;
+  /* background-image:); */assets/img/sparrow transparent.webp
 }
 
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-  #site-header,
-.star-divider,
-.content-section {
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-body.reveal #site-header,
-body.reveal .star-divider,
-body.reveal .content-section {
-  opacity: 1;
+/* Gradient Definitions */
+.gradient-sparrow {
+  background-image: linear-gradient(
+    0deg,
+    hsl(359, 60%, 40%),
+    hsl(16, 60%, 45%),
+    hsl(33, 60%, 50%),
+    hsl(45, 60%, 55%),
+    hsl(58, 60%, 60%),
+    hsl(58, 60%, 65%),
+    hsl(58, 60%, 70%),
+    hsl(96, 60%, 65%),
+    hsl(146, 60%, 60%),
+    hsl(183, 60%, 55%),
+    hsl(225, 60%, 50%),
+    hsl(265, 60%, 45%),
+    hsl(303, 60%, 40%)
+  );
 }
