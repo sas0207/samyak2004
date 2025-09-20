@@ -1,15 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("fadeIn");
-      } else {
-        entry.target.classList.remove("fadeIn");
-      }
-    });
-  });
+  const sparrowIntro = document.querySelector('.sparrow-intro');
 
-  document.querySelectorAll(".fadeInOnScroll").forEach((el) => {
-    observer.observe(el);
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+    if (scrollPercent >= 99) {
+      sparrowIntro.style.opacity = '0';
+      sparrowIntro.style.pointerEvents = 'none';
+      sparrowIntro.style.transform = 'scale(0.95)';
+
+      setTimeout(() => {
+        sparrowIntro.remove(); // ✅ removes the bird section
+        document.body.style.overflow = 'auto';
+        document.body.classList.add('reveal'); // ✅ triggers fade-in
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 1500);
+    }
   });
 });
