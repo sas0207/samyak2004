@@ -164,7 +164,7 @@
     setInterval(createStar, 100);
     animateStars();
   </script>
-  <script>
+ <script>
   document.addEventListener("DOMContentLoaded", () => {
     const sparrowIntro = document.querySelector('.sparrow-intro');
 
@@ -179,8 +179,9 @@
         sparrowIntro.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
-          sparrowIntro.style.display = 'none';
+          sparrowIntro.remove(); // ✅ completely removes the bird section
           document.body.style.overflow = 'auto';
+          document.body.classList.add('reveal');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 1500);
       }
