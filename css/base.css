@@ -155,23 +155,8 @@ body {
   height: 100%;
 }
 
-.gradient-sparrow {
-  background: linear-gradient(
-    0deg,
-    hsl(359, 60%, 40%),
-    hsl(16, 60%, 45%),
-    hsl(33, 60%, 50%),
-    hsl(45, 60%, 55%),
-    hsl(58, 60%, 60%),
-    hsl(58, 60%, 65%),
-    hsl(58, 60%, 70%),
-    hsl(96, 60%, 65%),
-    hsl(146, 60%, 60%),
-    hsl(183, 60%, 55%),
-    hsl(225, 60%, 50%),
-    hsl(265, 60%, 45%),
-    hsl(303, 60%, 40%)
-  );
+..gradient-sparrow {
+  background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta);
   animation: shimmer 8s linear infinite;
   mix-blend-mode: screen;
 }
