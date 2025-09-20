@@ -113,16 +113,15 @@ body {
 /* Fancy Sparrow Intro */
 .sparrow-img {
   width: 180px;
-  opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2));
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2));
+  pointer-events: none;
+  transition: filter 0.3s ease;
 
-  /* Shimmer gradient */
-  background: linear-gradient(135deg, #ffffff, #ffccaa, #ff66cc);
-  background-size: 200% 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  /* Shimmer via filter (safe for images) */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+}
+  .shimmer-aura {
+  padding: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  transition: background-position 0.3s ease;
 }
