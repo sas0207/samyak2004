@@ -123,29 +123,51 @@ body {
   font-family: 'Segoe UI', sans-serif;
   overflow: auto;
 }
-/* Gradient shimmer for Fancy Sparrow */
-
-
-/* Reset and global styles */
-/* Typography */
-/* Layout */
-/* Components */
-
-/* -------------------------------- */
-/* Fancy Sparrow Intro Styles (Place at bottom) */
-.sparrow-intro {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  pointer-events: none;
+/* Container */
+.shader {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 1rem;       /* optional rounded look */
 }
 
-.sparrow-img {
-  width: 180px;
-  opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2));
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.2));
+/* Base image */
+.shader > img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
+
+/* Overlay gradient layer */
+.shader-layer {
+  position: absolute;
+  inset: 0;                  /* top/right/bottom/left: 0 */
+  mix-blend-mode: multiply;  /* allows gradient + base to mix */
+}
+
+/* Shimmer effect: gradient stays fixed while page scrolls */
+.specular {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: color-dodge;   /* creates holographic shine */
+}
+
+/* The gradient itself */
+.gradient-sparrow {
+  background-image: linear-gradient(
+    45deg,
+    hsl(200, 80%, 70%),
+    hsl(300, 70%, 60%),
+    hsl(50, 90%, 70%),
+    hsl(200, 80%, 70%)
+  );
+}
+
+/* Mask image */
+.shader-layer.mask {
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;  /* reveals gradient only through mask */
+}
+
