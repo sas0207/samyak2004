@@ -1,4 +1,4 @@
-<script>
+
 document.addEventListener("DOMContentLoaded", () => {
   const sparrowIntro = document.querySelector('.sparrow-intro');
   const shinySparrow = document.querySelector('.sparrow-shiny');
@@ -26,4 +26,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-</script>
+
