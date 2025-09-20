@@ -150,30 +150,41 @@ body {
   display: inline-block;
 }
 
-.sparrow-black,
 .sparrow-shiny {
   width: 100%;
   height: auto;
   display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.shader-layer {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.sparrow-black {
-  z-index: 1;
-  opacity: 1;
-}
-
-.sparrow-shiny {
+  width: 100%;
+  height: 100%;
   z-index: 2;
-  opacity: 0;
+}
+
+.gradient-sparrow {
+  background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta); /* test gradient */
   animation: shimmer 8s linear infinite;
   mix-blend-mode: screen;
-  transition: opacity 1.2s ease;
+}
+
+.mask {
+  -webkit-mask-image: url("assets/img/sparrow transparent.webp");
+  mask-image: url("assets/img/sparrow transparent.webp");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 @keyframes shimmer {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
