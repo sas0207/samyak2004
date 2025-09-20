@@ -163,45 +163,37 @@
   setInterval(createStar, 100);
   animateStars();
 </script>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const progressCircle = document.querySelector('.progress');
     const percentText = document.querySelector('.scroll-percent');
     const introSection = document.querySelector('.scroll-intro');
-    const totalLength = 283; // circumference of the circle
-
-    // Initial setup: prevent scroll until intro fades
-    document.body.style.overflow = 'hidden';
 
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
-      const scrollHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
-      const offset = totalLength - (totalLength * scrollPercent) / 100;
+      const offset = 283 - (283 * scrollPercent) / 100;
 
-      // Update circular progress
       progressCircle.style.strokeDashoffset = offset;
-
-      // Update percentage text
       percentText.textContent = `${Math.floor(scrollPercent)}%`;
 
-      // Fade out intro when scroll reaches bottom
       if (scrollPercent >= 99) {
         introSection.style.opacity = '0';
         introSection.style.pointerEvents = 'none';
         introSection.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
-  document.body.style.overflow = 'auto';
-  document.documentElement.style.overflow = 'auto'; // ✅ covers edge cases
-  introSection.style.display = 'none';
-  console.log("Scroll forcibly unlocked");
-}, 1500);
+          introSection.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          document.documentElement.style.overflow = 'auto';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1500);
       }
     });
   });
 </script>
+
 </body>
 </html>
 
