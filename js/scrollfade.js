@@ -1,16 +1,16 @@
-
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const sparrowIntro = document.querySelector('.sparrow-intro');
-  const shinySparrow = document.querySelector('.sparrow-shiny');
+  const shaderLayer = document.querySelector('.shader-layer');
 
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const scrollHeight = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / scrollHeight) * 100;
 
-    // Optional shimmer reveal
+    // Fade in shimmer as you scroll
     if (scrollPercent >= 30) {
-      shinySparrow.style.opacity = '1';
+      shaderLayer.style.opacity = '1';
     }
 
     // Fade out intro and reveal site
@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         sparrowIntro.remove();
         document.body.classList.add('reveal');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 1200); // matches CSS transition
+      }, 1200);
     }
   });
 });
-
+</script>
