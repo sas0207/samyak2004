@@ -79,15 +79,25 @@
   </style>
 </head>
 <body>
-<!-- Fancy Sparrow Intro -->
-<div class="sparrow-wrapper">
-  <div class="shimmer-aura">
-    <img src="assets/img/stylized poetic spar.png" alt="Fancy Sparrow" class="sparrow-img" />
-  </div>
-</div>
 
-<div id="site-content" style="opacity: 0; transition: opacity 1.5s ease;">
-  <!-- Your full site content here -->
+  <!-- Scroll Timer Section -->
+  <section class="scroll-intro">
+    <div class="scroll-timer">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" class="track" />
+        <circle cx="50" cy="50" r="45" class="progress" />
+      </svg>
+      <div class="scroll-percent">0%</div>
+      <div class="scroll-icon">🕒</div>
+    </div>
+  </section>
+
+  <!-- Header Block -->
+  <header id="site-header">
+    <div class="logo-block">
+      <span class="logo-text">𝑺𝒂𝒔𝒉𝒓𝒆𝒗𝒆𝒍𝒂𝒊</span>
+      <img src="assets/img/pngtree_cartoon-white-coconut-tree-logo_21585820.png" alt="sasrevelai logo" class="logo-icon" />
+    </div>
 
     <!-- Nav Bar Under Logo -->
     <nav class="nav-inline">
@@ -98,7 +108,6 @@
         <li>Pricing</li>
       </ul>
     </nav>
-</div>
   </header>
 
   <!-- Star Divider Section -->
@@ -153,7 +162,38 @@
     setInterval(createStar, 100);
     animateStars();
   </script>
-<script src="js/scrollfade.js" defer></script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const progressCircle = document.querySelector('.progress');
+    const percentText = document.querySelector('.scroll-percent');
+    const introSection = document.querySelector('.scroll-intro');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.min((scrollTop / scrollHeight) * 100, 100);
+      const offset = 283 - (283 * scrollPercent) / 100;
+
+      progressCircle.style.strokeDashoffset = offset;
+      percentText.textContent = ${Math.floor(scrollPercent)}%;
+
+      if (scrollPercent >= 99) {
+        progressCircle.style.strokeDashoffset = 0;
+        percentText.textContent = 100%;
+
+        introSection.style.opacity = '0';
+        introSection.style.pointerEvents = 'none';
+        introSection.style.transform = 'scale(0.95)';
+
+        setTimeout(() => {
+          introSection.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // 👈 scrolls back to top
+        }, 1500);
+      }
+    });
+  });
+</script>
 </body>
 </html>
-
