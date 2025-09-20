@@ -123,11 +123,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
   overflow: auto;
 }
-body {
-  height: 1000vh; /* ensures scroll space for timer */
-  overflow: auto; /* re-enables scroll after intro fades */
-}
-/* 🔥 Fancy Sparrow Intro Styles */
 .sparrow-intro {
   position: fixed;
   top: 0;
@@ -147,46 +142,21 @@ body {
   color: white;
 }
 
-.sparrow-label {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
 .shader {
   position: relative;
-  overflow: hidden;
-  backface-visibility: hidden;
   display: inline-block;
 }
 
 .shader-layer {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-position: center;
-  mix-blend-mode: multiply;
-}
-
-.specular {
-  mix-blend-mode: color-dodge;
-  background-attachment: fixed;
-}
-
-.mask {
-  mix-blend-mode: multiply;
-  -webkit-mask-image: url("https://assets.codepen.io/2153413/sparrow-mask.png");
-  mask-image: url("https://assets.codepen.io/2153413/sparrow-mask.png");
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
 }
 
 .gradient-sparrow {
-  background-image: linear-gradient(
+  background: linear-gradient(
     0deg,
     hsl(359, 60%, 40%),
     hsl(16, 60%, 45%),
@@ -203,22 +173,21 @@ body {
     hsl(303, 60%, 40%)
   );
   animation: shimmer 8s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.mask {
+  -webkit-mask-image: url("https://assets.codepen.io/2153413/sparrow-mask.png");
+  mask-image: url("https://assets.codepen.io/2153413/sparrow-mask.png");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 @keyframes shimmer {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
-}
-/* 🔥 Cinematic Fade-In for Site Reveal */
-#site-header,
-.star-divider,
-.content-section {
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-body.reveal #site-header,
-body.reveal .star-divider,
-body.reveal .content-section {
-  opacity: 1;
 }
