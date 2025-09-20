@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollPercent = (scrollTop / scrollHeight) * 100;
 
     // Fade in shimmer as you scroll
-    if (scrollPercent >= 30) {
-      shaderLayer.style.opacity = '1';
-    }
+    shaderLayer.style.opacity = Math.min(scrollPercent / 100, 1);
 
     // Fade out intro and reveal site
     if (scrollPercent >= 99) {
