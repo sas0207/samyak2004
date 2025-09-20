@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
       sparrowIntro.style.transform = 'scale(0.95)';
 
       setTimeout(() => {
-        sparrowIntro.remove(); // ✅ removes the bird section
+        sparrowIntro.remove();
         document.body.style.overflow = 'auto';
-        document.body.classList.add('reveal'); // ✅ triggers fade-in
+        document.body.classList.add('reveal');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 1500);
     }
