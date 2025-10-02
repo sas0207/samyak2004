@@ -97,7 +97,7 @@
     left: -5%;
     width: 60%;
     height: 60%;
-    background: url('../../pink-glitter-light-spray-effect-dust-sparkle.png') no-repeat;
+    background: url('assets/img//pink-glitter-light-spray-effect-dust-sparkle.png') no-repeat;
     background-size: contain;
     background-position: left top;
     z-index: 10;
@@ -196,7 +196,7 @@
 }
 
 /* Ensure first image is visible by default */
-#elsa[src*="elsa1.png"] {
+#elsa[src*="assets/img/elsa1.png"] {
     opacity: 1;
     animation: none;
 }
