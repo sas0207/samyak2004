@@ -1,116 +1,85 @@
-body {
-  height: 2000vh;
-  overflow: auto;
-  margin: 0;
-  background-color: #000;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-}
-.logo-block {
-  position: absolute;
-  top: 1cm;
-  left: 1cm;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: flex-end;
+/* Base styles for holographic effect */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: #000;
+    position: relative;
+    min-height: 100vh;
 }
 
-.logo-icon {
-  width: 36px;
-  height: auto;
-  border-radius: 4px;
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000 url('../Screenshot.png') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
 }
 
-.logo-text {
-  font-size: 1.8rem;
-  font-family: 'Times New Roman', serif;
-  font-weight: normal;
-  color: white;
-}
-.nav-inline {
-  position: absolute;
-  top: 2.5cm; /* adjust if needed */
-  left: 1cm;
-}
-
-.nav-inline ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
-.nav-inline li {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-  text-transform: capitalize;
-  transition: color 0.3s ease, transform 0.3s ease;
+.background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, 
+            rgba(0, 100, 255, 0.1) 0%, 
+            rgba(255, 0, 200, 0.1) 50%, 
+            rgba(0, 200, 255, 0.1) 100%
+        ),
+        url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') repeat;
+    background-blend-mode: overlay;
+    z-index: 2;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
-.nav-inline li:hover {
-  color: #00ffe7;
-  transform: translateY(-2px);
-  #site-header,
-.nav-inline {
-  position: relative;
-  z-index: 1; /* ensures nav stays above canvas */
-}
- /* Star Canvas Styling */
-#starCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* allows mouse to pass through */
-  z-index: 0; /* pushes canvas behind everything else */
+.content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    z-index: 2;
 }
 
-/* Divider Section Styling */
-.star-divider {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-  background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 0;
-}
-
-/* Header and Nav Styling */
-#site-header,
-.nav-inline {
-  position: relative;
-  z-index: 2; /* ensures nav stays above canvas */
-}
-/* Content Section Container */
-.content-section {
-  position: relative;
-  height: 100vh;
-  background-color: black;
-}
-
-/* Poetic Box Styling */
-.poetic-box {
-  position: absolute;
-  left: 4cm;
-  right: 4cm;
-  top: calc(2cm + 150px); /* 2cm below nav + star divider height */
-  bottom: 2cm;
-  background-color: rgba(255, 255, 255, 0.05);
-  color: white;
-  padding: 30px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  font-family: 'Segoe UI', sans-serif;
-  overflow: auto;
-}
-body {
-  height: 1000vh; /* ensures scroll space for timer */
-  overflow: auto; /* re-enables scroll after intro fades */
+.hologram {
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, 
+            rgba(0, 200, 255, 0.8) 0%, 
+            rgba(255, 0, 255, 0.6) 50%, 
+            rgba(0, 255, 200, 0.8) 100%
+        ),
+        url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBpZD0iZ3JhZGllbnQiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjcwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwY2NmZiIgc3RvcC1vcGFjaXR5PSIwLjYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjAwZmYiIHN0b3Atb3BhY2l0eT0iMC42Ii8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkaWVudCkiIG9wYWNpdHk9IjAuNSIvPjwvc3ZnPg==');
+    background-blend-mode: color-dodge;
+    -webkit-mask: url('../sparrow transparent.webp') no-repeat center/contain;
+    mask: url('../sparrow transparent.webp') no-repeat center/contain;
+    filter: brightness(1.2) contrast(1.2);
+    will-change: filter, background-position;
+    transition: filter 0.2s ease-out;
 }
