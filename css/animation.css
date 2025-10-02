@@ -1,9 +1,202 @@
-.fadeInOnScroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+/* Animation Styles */
+@keyframes hologramPulse {
+    0% { filter: brightness(0.9) contrast(2.2) saturate(2.2); }
+    100% { filter: brightness(1.1) contrast(2.5) saturate(2.5); }
 }
-.fadeIn {
-  opacity: 1;
-  transform: translateY(0);
+
+@keyframes hologramShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hologram Styles */
+#hologram {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vmin;
+    height: 40vmin;
+    -webkit-mask: 
+        url('../sparrow transparent.webp') no-repeat center/contain,
+        linear-gradient(black, black);
+    mask: 
+        url('../sparrow transparent.webp') no-repeat center/contain,
+        linear-gradient(black, black);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    pointer-events: none;
+    border-radius: 2px;
+    filter: brightness(0.9) contrast(2.2) saturate(2.2);
+    animation: 
+        hologramPulse 6s infinite alternate,
+        hologramShimmer 10s infinite;
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+/* Frozen Section Styles */
+#frozen-section {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%);
+    will-change: transform, opacity;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+#frozen-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0.2s;
+}
+
+.frozen-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Dim Overlay */
+.dim-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        ellipse at 20% 30%,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Pink Glitter Spotlight */
+.spotlight {
+    position: fixed;
+    top: -10%;
+    left: -5%;
+    width: 60%;
+    height: 60%;
+    background: url('../../pink-glitter-light-spray-effect-dust-sparkle.png') no-repeat;
+    background-size: contain;
+    background-position: left top;
+    z-index: 10;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    will-change: opacity, transform;
+    transform: scale(1.2);
+    transform-origin: left top;
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 180, 255, 0.6));
+}
+
+/* Ensure Elsa appears under the spotlight */
+.elsa-container {
+    position: relative;
+    z-index: 5;
+}
+
+/* Add animation to the spotlight when visible */
+.spotlight.visible {
+    opacity: 1;
+    animation: 
+        glitterPulse 3s infinite alternate,
+        floatSpotlight 5s ease-in-out infinite alternate;
+}
+
+@keyframes glitterPulse {
+    0% {
+        opacity: 0.9;
+        filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 180, 255, 0.5));
+    }
+    100% {
+        opacity: 1;
+        filter: brightness(1.4) drop-shadow(0 0 25px rgba(255, 180, 255, 0.8));
+    }
+}
+
+@keyframes floatSpotlight {
+    0% {
+        transform: translate(-3%, -3%) scale(1.15);
+    }
+    100% {
+        transform: translate(0, 0) scale(1.25);
+    }
+}
+
+.frozen-bg-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%) scale(0.9);
+    object-fit: cover;
+    z-index: 1;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Elsa Character */
+#elsa-container {
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    z-index: 20; /* Above the spotlight */
+    width: 300px;
+    height: 500px;
+    transform-origin: bottom center;
+    will-change: transform, opacity;
+    pointer-events: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7));
+}
+
+/* Remove any box around the image */
+#elsa {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.elsa-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    filter: drop-shadow(0 0 10px rgba(173, 216, 230, 0.7));
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Ensure first image is visible by default */
+#elsa[src*="elsa1.png"] {
+    opacity: 1;
+    animation: none;
 }
