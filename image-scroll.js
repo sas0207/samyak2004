@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Jasmine images
         const imageUrls = [
-            './jasmine png/jasmine1.png',
-            './jasmine png/jasmine2.png',
-            './jasmine png/jasmine3.png',
-            './jasmine png/jasmine4.png',
-            './jasmine png/jasmine5.png',
-            './jasmine png/jasmine6.png',
-            './jasmine png/jasmine7.png',
-            './jasmine png/jasmine8.png'
+            'assets/img/jasmine1.png',
+            'assets/img/jasmine2.png',
+            'assets/img/jasmine3.png',
+            'assets/img/jasmine4.png',
+            'assets/img/jasmine5.png',
+            'assets/img/jasmine6.png',
+            'assets/img/jasmine7.png',
+            'assets/img/jasmine8.png'
         ];
         
         // Clear any existing images
